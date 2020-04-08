@@ -27,3 +27,61 @@ const assignValue = () => {
 }
 
 assignValue();
+
+const banks = [
+    {
+        name: 'alfa',
+        precents: 8.7,
+    },
+    {
+        name: 'sberbank',
+        precents: 8.4,
+    },
+    {
+        name: 'pochta',
+        precents: 7.9,
+    },
+    {
+        name: 'tinkoff',
+        precents: 9.2,
+    },
+];
+
+let currentPrecent = banks[0].precents;
+
+for (let bank  of bankBtns) {
+    bank.addEventListener('click', () => {
+        for (let item of bankBtns) {
+            item.classList.remove('active');
+        }
+        bank.classList.add('active');     
+        takeActiveBank(bank);   
+    });
+}
+
+const takeActiveBank = currentActive => {
+    const dataAttrValue = currentActive.dataset.name;
+    const currentBank = banks.find(bank => bank.name === dataAttrValue);
+   currentPrecent = currentBank.precents;    
+};
+
+for (let input of inputsRange) {
+    input.addEventListener('input', () => {
+        assignValue();
+    
+    });
+    
+}
+const calculation = (totalCost = 0, anInitialFee = 100000, creditTerm = 1) => {
+    /*
+    ЕП = Ежемесечный платеж
+    РК - Размер кредита
+    ПС - Процентная ставка
+    КМ - колличество месяцев
+    ЕП =(РК +(((РК / 100) * ПС) / 12 * КМ) / КМ
+    */
+
+    let mountlyPayment; // ежемесячный платеж 
+    let lounAmount = totalCost - anInitialFee; // размер кредита
+}
+
